@@ -6,11 +6,9 @@ services:
       - POSTGRES_PASSWORD=root
       - POSTGRES_DB=ny_taxi
     volumes:
-      - "./ny_taxi_postgres_data:/var/lib/postgresql/data:rw"
-      - "/var/lib/postgresql/data:rw"
-      - pgdata:/var/lib/postgresql/data
-      - pgconf:/etc/postgresql
-      - pglog:/var/log/postgresql
+      ##- "./ny_taxi_postgres_data:/var/lib/postgresql/data:rw"
+      - postgres-data:/var/lib/postgresql/data
+
     ports:
       - "5432:5432"
   pgadmin:
@@ -20,10 +18,3 @@ services:
       - PGADMIN_DEFAULT_PASSWORD=root
     ports:
       - "8080:80"
-    volumes:
-  pgdata:
-    driver: local
-  pgconf:
-    driver: local
-  pglog:
-    driver: local
